@@ -130,7 +130,7 @@ int main() {
 
     int temp;
     // declaration end
-    ebn0s= 2.4;
+    ebn0s= 2.0;
 
     // open file
     FILE *fpr;
@@ -735,6 +735,25 @@ int main() {
                             temp1uij1[2] = Lj[j];
                             qij1[i][j] = temp1uij1[0] + temp1uij1[1] + temp1uij1[2];
                         }
+                    } else {
+                        for (i = 0; i < 6; i++) {
+                            for (m = 0; m < 5; m++) {
+                                if (m < i) { 
+                                    valL = M2[j-5553][m] - 1;
+                                    if (valL < (rc/2)) temp1uij2[m] = uij1[valL][comput1[valL]]; 
+                                    else if (valL >= (rc/2) && valL < 4319) temp1uij2[m] = 0;//temp1uij2[m] = uij2[valL-2468][comput1[valL]];
+                                    else temp1uij2[m] = 0;//temp1uij2[m] = uij3[valL-4319][comput1[valL]]; 
+                                }
+                                else if (m >= i) {
+                                    valL = M2[j-5553][m + 1] - 1;
+                                    if (valL < (rc/2)) temp1uij2[m] = uij1[valL][comput1[valL]]; 
+                                    else if (valL >= (rc/2) && valL < 4319) temp1uij2[m] = 0;//temp1uij2[m] = uij2[valL-2468][comput1[valL]];
+                                    else temp1uij2[m] = 0;//temp1uij2[m] = uij3[valL-4319][comput1[valL]];
+                                }
+                            }
+                            temp1uij2[5] = Lj[j];
+                            qij2[i][j-5553] = temp1uij2[0] + temp1uij2[1] + temp1uij2[2] +temp1uij2[3] + temp1uij2[4] + temp1uij2[5];
+                        }                    
                     }
                     if (j < 5553) {
                         for (m = 0; m < 3; m++) comput1[M1[j][m] - 1] += 1;
@@ -840,7 +859,7 @@ int main() {
     // code ended
 
     FILE *outfp2; 
-    outfp2 = fopen("c3alg_2_4_level1_ieq100_modify.txt","w");
+    outfp2 = fopen("c3alg_2_0_level1_ieq100_modify_2.txt","w");
          fprintf(outfp2,"%g ",ebn0s);
          fprintf(outfp2,"%g ",ber1);
          fprintf(outfp2,"%g ",ber2);

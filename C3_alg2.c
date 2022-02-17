@@ -130,7 +130,7 @@ int main() {
 
     int temp;
     // declaration end
-    ebn0s= 0.6;
+    ebn0s= 0.8;
 
     // open file
     FILE *fpr;
@@ -335,7 +335,7 @@ int main() {
     u = (int *)malloc(ulen * sizeof(int));
 
     // for CODE part
-    while (error_block < 50) {        
+    while (error_block < 100) {        
         k = 2;   // need to initialize for computing new information block
         I_eq = 0;
         
@@ -584,7 +584,7 @@ int main() {
             }    
             for (i = 0; i < rc/2; i++) if (checkbit[i] == 0 ) s++;
             I_eq++;
-            printf("1_I_eq = %d\n", I_eq);
+            //printf("1_I_eq = %d\n", I_eq);
             //printf("s_2 = %d\n", s_2);
             if (s_2 == rc/2) k--;
         }
@@ -597,7 +597,7 @@ int main() {
         while (I_eq < I_max && k == (level - 1) && s != rc/2) {
             s = 0;
             //printf("yes!");
-            for (I_eq_1_2 = 0; I_eq_1_2 < 3; I_eq_1_2++) {
+            for (I_eq_1_2 = 0; I_eq_1_2 < 2; I_eq_1_2++) {
                 for (i = 0; i < 11; i++) tempqij1[i] = 0.0;
                 for (i = 0; i < 4; i++) tempqij2[i] = 0.0;
                 for (i = 0; i < 5; i++) tempqij3[i] = 0.0;
@@ -854,6 +854,13 @@ int main() {
         printf("num = %d ",num);
         printf("totalerror1 = %d ", totalerror1);
         printf("totalerror2 = %d ", totalerror2);
+        FILE *outfp3; 
+        outfp3 = fopen("c3alg_0_2_level2_totalerror.txt","a");
+         fprintf(outfp2,"%g ",ebn0s);
+         fprintf(outfp2,"%g ",ber1);
+         fprintf(outfp2,"%g ",ber2);
+         fprintf(outfp2,"\n");
+        fclose(outfp3);
     }
     double ber1;
     double ber2;
@@ -868,7 +875,7 @@ int main() {
     // code ended
 
     FILE *outfp2; 
-    outfp2 = fopen("c3alg_0_6_level2.txt","w");
+    outfp2 = fopen("c3alg_0_8_level2.txt","w");
          fprintf(outfp2,"%g ",ebn0s);
          fprintf(outfp2,"%g ",ber1);
          fprintf(outfp2,"%g ",ber2);

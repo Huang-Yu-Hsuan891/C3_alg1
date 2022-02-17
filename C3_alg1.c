@@ -600,7 +600,6 @@ int main() {
         //printf("s =%d \n",s);
         while (I_eq < I_max && k == (level - 1) && s != rc/2) {
             s = 0;
-            //printf("yes!");
             for (I_eq_1_2 = 0; I_eq_1_2 < 3; I_eq_1_2++) {
                 for (i = 0; i < 11; i++) tempqij1[i] = 0.0;
                 for (i = 0; i < 4; i++) tempqij2[i] = 0.0;
